@@ -181,8 +181,8 @@
 }
 
 .photo-2 {
-  top: 12%;
-  right: 30%;
+  top: 6%;
+  right: 20%;
   width: clamp(130px, 17vw, 260px);
   transform: rotate(5deg);
 }
