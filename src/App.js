@@ -30,6 +30,30 @@ function Unit({ value, label, formatted }) {
   );
 }
 
+// Drop exactly these 6 filenames into public/pictures — nothing else to wire up.
+const PHOTOS = [
+  'photo1.jpg',
+  'photo2.jpg',
+  'photo3.jpg',
+  'photo4.jpg',
+  'photo5.jpg',
+  'photo6.jpg',
+];
+
+function Photos() {
+  return (
+    <div className="photos" aria-hidden="true">
+      {PHOTOS.map((file, i) => (
+        <div
+          key={file}
+          className={`photo photo-${i + 1}`}
+          style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/pictures/${file})` }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function App() {
   const [time, setTime] = useState(getRemaining());
   const rootRef = useRef(null);
@@ -47,6 +71,7 @@ export default function App() {
     <div className="page" ref={rootRef}>
       <div className="vignette" aria-hidden="true" />
       <div className="grain" aria-hidden="true" />
+      <Photos />
 
       <main className="content">
         <p className="eyebrow">until you're home</p>

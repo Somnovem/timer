@@ -150,3 +150,80 @@
     margin-top: 0.15em;
   }
 }
+
+/* Photos — loosely placed around the timer, like prints tacked to a wall.
+   Position with top/left percentages so they scale with viewport; no containers needed. */
+.photos {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.photo {
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--ink-deep);
+  border: 6px solid #f2ebdd;
+  border-radius: 2px;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.55),
+    0 2px 6px rgba(0, 0, 0, 0.4);
+  width: clamp(110px, 14vw, 220px);
+  aspect-ratio: 4 / 5;
+}
+
+.photo-1 {
+  top: 10%;
+  left: 8%;
+  transform: rotate(-7deg);
+}
+
+.photo-2 {
+  top: 12%;
+  right: 10%;
+  width: clamp(130px, 17vw, 260px);
+  transform: rotate(5deg);
+}
+
+.photo-3 {
+  top: 16%;
+  right: 2%;
+  transform: rotate(-4deg);
+}
+
+.photo-4 {
+  bottom: 14%;
+  left: 4%;
+  transform: rotate(6deg);
+}
+
+.photo-5 {
+  bottom: 8%;
+  left: 22%;
+  transform: rotate(-5deg);
+}
+
+.photo-6 {
+  bottom: 10%;
+  right: 8%;
+  transform: rotate(8deg);
+}
+
+/* Below ~900px the frame is too tight for both photos and timer to coexist
+   without collision — fade photos out rather than let them overlap text. */
+@media (max-width: 900px) {
+  .photos {
+    opacity: 0.5;
+  }
+  .photo {
+    width: clamp(70px, 22vw, 120px);
+  }
+}
+
+@media (max-width: 600px) {
+  .photos {
+    display: none;
+  }
+}
